@@ -3,9 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= movies[0].name %> - Movie Details</title>
+   <link rel="stylesheet" href="/assets/css/detaile.css">
+
 </head>
 <body>
-    <h1>movie details</h1>
+    <div class="header">
+        <h1 class="page-title">🎬 Movie Details</h1>
+        <p class="subtitle">Discover the magic behind the screen</p>
+    </div>
+
+    <div class="container">
+        <div class="movie-content">
+            <div class="poster-section">
+                <div class="poster-container">
+                    <img src="./uploads/MoviePoster/<%= movies[0].img %>" alt="<%= movies[0].name %> Poster" />
+                    <div class="poster-overlay"></div>
+                </div>
+            </div>
+            
+            <div class="details-section">
+                <h2 class="movie-title"><%= movies[0].name %></h2>
+                
+                <div class="detail-item">
+                    <div class="detail-label">
+                        <span class="detail-icon">🎭</span>
+                        Lead Actor
+                    </div>
+                    <div class="detail-value"><%= movies[0].actor %></div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">
+                        <span class="detail-icon">🎪</span>
+                        Genre
+                    </div>
+                    <div class="detail-value"><%= movies[0].movieType %></div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">
+                        <span class="detail-icon">📝</span>
+                        Quick Summary
+                    </div>
+                    <div class="detail-value"><%= movies[0].shortDetails %></div>
+                </div>
+
+                <div class="detail-item full-details">
+                    <div class="detail-label">
+                        <span class="detail-icon">📖</span>
+                        Complete Story
+                    </div>
+                    <div class="detail-value"><%= movies[0].fullDetails %></div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="/"><button class="btn btn-edit">
+                        ⬅️ Back to Home
+                    </button></a>
+                    <a href="/edit/<%= movies[0]._id %>" class="btn btn-edit">
+                        ✏️ Edit Movie
+                    </a>
+                    <a href="/deletemovie/<%= movies[0]._id %>" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this movie?')">
+                        🗑️ Delete Movie
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and animations
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate detail items on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Set initial state for animations
+            document.querySelectorAll('.detail-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+
+            // Add click ripple effect to buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        // Add ripple effect styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

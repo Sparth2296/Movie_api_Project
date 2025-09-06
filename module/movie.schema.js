@@ -23,27 +23,27 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  moviePoster: {
+  img: {
     type: String,
     required: true,
   },
 });
 
-// ✅ Multer config
-const imageStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../uploads/MoviePoster"));
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
+// // ✅ Multer config
+// const imageStorage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, path.join(__dirname, "../uploads/MoviePoster"));
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname);
+//   },
+// });
 
-// ✅ Attaching multer to schema
-movieSchema.statics.uploadImg = multer({ storage: imageStorage }).single("moviePoster");
-movieSchema.statics.moviePosterPath = "/uploads/MoviePoster";
+// // ✅ Attaching multer to schema
+// movieSchema.statics.uploadImg = multer({ storage: imageStorage }).single("img");
+// movieSchema.statics.imgPath = "/uploads/MoviePoster";
 
-// ✅ Export model directly
+// // ✅ Export model directly
 const Movie = mongoose.model("Movie", movieSchema);
 
 module.exports = Movie;

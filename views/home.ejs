@@ -1,122 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CinemaVault - Premium Movie Collection</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <style>
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
-        <div class="nav-content">
-            <a href="/" class="logo">CinemaVault</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#movies">Movies</a></li>
-                <li><a href="#genres">Genres</a></li>
-                <li><a href="#favorites">Favorites</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </div>
+      <div class="nav-content">
+        <a href="/" class="logo">CinemaVault</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#movies">Movies</a></li>
+          <li><a href="#genres">Genres</a></li>
+          <li><a href="#favorites">Favorites</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Hero Section with Slider -->
     <section class="hero-section" id="home">
-        <div class="hero-slider">
-            <div class="slide active" style="background-image: url('https://i.pinimg.com/736x/6e/55/e3/6e55e3f32df259ccd7a45a3c00111293.jpg')"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2028&q=80')"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1616530940355-351fabd9524b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')"></div>
-        </div>
-        
-        <div class="hero-content">
-            <h1 class="hero-title">Welcome to CinemaVault</h1>
-            <p class="hero-subtitle">Discover the finest collection of movies from around the world. Immerse yourself in captivating stories, stunning visuals, and unforgettable experiences.</p>
-            <div class="hero-buttons">
-                <button class="hero-btn hero-btn-primary">
-                    🎬 Browse Movies
-                </button>
-                <button class="hero-btn hero-btn-secondary">
-                    ⭐ Top Rated
-                </button>
-            </div>
-        </div>
+      <div class="hero-slider">
+        <div
+          class="slide active"
+          style="
+            background-image: url('https://i.pinimg.com/736x/6e/55/e3/6e55e3f32df259ccd7a45a3c00111293.jpg');
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url('https://t3.ftcdn.net/jpg/04/81/76/22/360_F_481762281_Xcvl3QsGh1pBMvQuyKIoIqq8aYksXEwX.jpg');
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url('https://wallpapers.com/images/hd/amazon-prime-video-soxdlts7btm403q5.jpg');
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url('https://ddnews.gov.in/wp-content/uploads/2025/02/202502143327685.jpeg');
+          "
+        ></div>
+      </div>
 
-        <div class="slider-nav">
-            <div class="nav-dot active" data-slide="0"></div>
-            <div class="nav-dot " data-slide="1"></div>
-            <div class="nav-dot" data-slide="2"></div>
-            <div class="nav-dot" data-slide="3"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to CinemaVault</h1>
+        <p class="hero-subtitle">
+          Discover the finest collection of movies from around the world.
+        </p>
+        <div class="hero-buttons">
+          <a href="/add"><button class="hero-btn hero-btn-primary">🎬 Add Movies</button></a>
+          <button class="hero-btn hero-btn-secondary">⭐ Top Rated</button>
         </div>
+      </div>
+
+      <div class="slider-nav">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+      </div>
     </section>
 
-    <!-- Main Content -->
     <main class="main-content" id="movies">
-        <div class="section-title">
-            <h2>Featured Movies</h2>
-            <p>Discover amazing cinema from around the world</p>
-        </div>
+      <div class="section-title">
+        <h2>Featured Movies</h2>
+        <p>Discover amazing cinema from around the world</p>
+      </div>
 
-        <div class="movie-container">
-           
-
-            <!-- Your EJS loop would go here -->
-            
-            <% movies.forEach(movie => { %>
-                <div class="movie-card">
-                    <img src="/uploads/MoviePoster/<%= movie.moviePoster %>" alt="<%= movie.name %> Poster" class="movie-poster">
-                    <div class="movie-info">
-                        <h2 class="movie-title"><%= movie.name %></h2>
-                        <p><strong>Actor:</strong> <%= movie.actor %></p>
-                        <p><strong>Type:</strong> <%= movie.movieType %></p>
-                        <p class="short-details"><%= movie.shortDetails %></p>
-                        <button class="view-btn">View Details</button>
-                    </div>
-                </div>
-            <% }) %>
-            
+      <div class="movie-container">
+        <!-- Your EJS loop would go here -->
+        <% movies.forEach(movie=> { %>
+        <div class="movie-card">
+          <img
+            src="./uploads/MoviePoster/<%= movie.img %>"
+            alt="<%= movie.name %> Poster"
+            class="movie-poster"
+          />
+          <div class="movie-info">
+            <h2 class="movie-title"><%= movie.name %></h2>
+            <p>
+              <strong>Actor:</strong>
+              <%= movie.actor %>
+            </p>
+            <p>
+              <strong>Type:</strong>
+              <%= movie.movieType %>
+            </p>
+            <p class="short-details"><%= movie.shortDetails %></p>
+            <a href="/<%= movie._id %>"><button class="view-btn">View Details</button></a>
+          </div>
         </div>
+        <% }) %>
+      </div>
     </main>
-
     <!-- Footer -->
     <footer class="footer" id="about">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#privacy">Privacy Policy</a>
-                <a href="#terms">Terms of Service</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#help">Help Center</a>
-                <a href="#careers">Careers</a>
-                <a href="#press">Press</a>
-            </div>
-            <p>&copy; 2025 CinemaVault. All rights reserved. Made with ❤️ for movie lovers worldwide.</p>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms of Service</a>
+          <a href="#contact">Contact Us</a> <a href="#help">Help Center</a>
+          <a href="#careers">Careers</a> <a href="#press">Press</a>
         </div>
+        <p>
+          &copy; 2025 CinemaVault. All rights reserved. Made with ❤️ for movie
+          lovers worldwide.
+        </p>
+      </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTop">↑</button>
-
     <script>
-        // Hero Slider Functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const navDots = document.querySelectorAll('.nav-dot');
-        const totalSlides = slides.length;
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const navDots = document.querySelectorAll(".nav-dot");
+      const totalSlides = slides.length;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            navDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === index);
+        });
+        navDots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+      }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+      }
 
-        // Auto-play slider
-        setInterval(next
+      setInterval(nextSlide, 4000);
+
+      navDots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          currentSlide = i;
+          showSlide(currentSlide);
+        });
+      });
+    </script>
+  </body>
+</html>

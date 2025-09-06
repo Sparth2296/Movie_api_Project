@@ -11,8 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/assets', express.static(path.join(__dirname, './assets')))
-
-app.use('/movies', require('./router/movie.router'))
+app.set('/views', express.static(path.join(__dirname, './views')))
+app.use('/', require('./router/movie.router'))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 

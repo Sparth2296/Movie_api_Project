@@ -4,30 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Movie - Dark Theme</title>
+    <link rel="stylesheet" href="/assets/css/add.css">
 </head>
 
 <body>
-    <h1>Add Movie</h1>
+    <div class="container">
+        <h1>🎬 Add Movie</h1>
+        
+        <form action="/addmovie" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Movie Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter movie title..." required>
+            </div>
 
-    <form action="/addmovie" method="POST">
+            <div class="form-group">
+                <label for="actor">Lead Actor</label>
+                <input type="text" id="actor" name="actor" placeholder="Enter main actor's name..." required>
+            </div>
 
-        <input type="text" name="name" placeholder="Enater Movie  Name" required>
+            <div class="form-group">
+                <label for="movieType">Genre</label>
+                <input type="text" id="movieType" name="movieType" placeholder="e.g., Action, Drama, Comedy..." required>
+            </div>
 
-        <input type="text" name="actor" placeholder="Enter actor Name" required>
+            <div class="form-group">
+                <label for="shortDetails">Short Description</label>
+                <input type="text" id="shortDetails" name="shortDetails" placeholder="Brief movie summary..." required>
+            </div>
 
-        <input type="text" name="movieType" placeholder="Enter Movie Type" required>
+            <div class="form-group">
+                <label for="fullDetails">Full Details</label>
+                <textarea id="fullDetails" name="fullDetails" placeholder="Complete movie description, plot, cast details..." required></textarea>
+            </div>
 
-        <input type="text" name="shortDetails" placeholder="Enter Short Details" required>
+            <div class="form-group">
+                <label for="img">Movie Poster</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="img" name="img" accept="image/*" required>
+                    <label for="img" class="file-input-label">
+                        <span class="file-icon">📁</span>
+                        <span>Choose movie poster image</span>
+                    </label>
+                </div>
+            </div>
 
-        <input type="text" name="fullDetails" placeholder="Enter Full Details" required>
+            <button type="submit" class="submit-btn">
+                Add Movie to Database
+            </button>
+        </form>
+    </div>
 
-        <input type="file" name="moviePoster" placeholder="Enter Movie Poster" required>
+    <script>
+        // File input feedback
+        document.getElementById('img').addEventListener('change', function(e) {
+            const label = document.querySelector('.file-input-label span:last-child');
+            const fileName = e.target.files[0]?.name;
+            if (fileName) {
+                label.textContent = `Selected: ${fileName}`;
+                label.parentElement.style.borderColor = '#4ecdc4';
+                label.parentElement.style.background = 'rgba(78, 205, 196, 0.1)';
+            }
+        });
 
-
-
-        <button type="submit">Add Movie</button>
-    </form>
+        // Form validation feedback
+        const inputs = document.querySelectorAll('input[type="text"], textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value.length > 0) {
+                    this.style.borderColor = '#4ecdc4';
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
