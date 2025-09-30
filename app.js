@@ -1,29 +1,21 @@
-const express = require('express')
-const app = express()
-const path = require('path')
-const port = 3000
-const db = require('./config/db')
+const express = require("express");
+const path = require("path");
+const app = express();
 
-
-
-app.set('view engine', 'ejs')
+// Middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// Set view engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-app.use('/assets', express.static(path.join(__dirname, './assets')))
-app.set('/views', express.static(path.join(__dirname, './views')))
-app.use('/', require('./router/movie.router'))
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+// Static files (assets, uploads, etc.)
+app.use("/assets", express.static(path.join(__dirname, "assets")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// Routers
+const movieRouter = require("./router/movie.router");
+app.use("/", movieRouter);
 
-
-app.listen(port, (err) => {
-    if (err) {
-        console.error(`Error starting server: ${err}`);
-    } else {
-        console.log(`Example app listening on port ${port}!`);
-    }
-});
-
-
-module.exports = app;
+module.exports = app; // ❌ don’t app.listen here

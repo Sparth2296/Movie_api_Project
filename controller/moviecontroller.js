@@ -7,7 +7,7 @@ module.exports.homePage = async (req ,res)=>{
     try {
         const movies = await movie.find();
 
-        res.render('home', { movies });
+        res.render('index', { movies });
     } catch (error) {
         console.error(`Error fetching movies: ${error}`);
         res.status(500).send('Internal Server Error');
