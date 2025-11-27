@@ -81,7 +81,7 @@
         <% movies.forEach(movie=> { %>
         <div class="movie-card">
           <img
-            src="./uploads/MoviePoster/<%= movie.img %>"
+            src="<%= movie.img %>"
             alt="<%= movie.name %> Poster"
             class="movie-poster"
           />
@@ -96,7 +96,7 @@
               <%= movie.movieType %>
             </p>
             <p class="short-details"><%= movie.shortDetails %></p>
-            <a href="/<%= movie._id %>"><button class="view-btn">View Details</button></a>
+            <a href="<%= movie._id %>"><button class="view-btn">View Details</button></a>
           </div>
         </div>
         <% }) %>
